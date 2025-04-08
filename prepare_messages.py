@@ -1,4 +1,5 @@
 import pandas
+import pickle
 
 file = pandas.read_excel("CEOM - Automatización de Mensajes por WhatsApp.xlsx", sheet_name="DATOS DE ENVÍO", skiprows=2)
 
@@ -23,8 +24,7 @@ for i, row in file.iterrows():
     """
     messages.append((numero, mensaje))
 
-    for numero, message in messages:
-        print(f"Número: {numero}")
-        print("Mensaje:")
-        print(mensaje)
-        print("="*50)
+with open("messages.pkl", "wb") as f:
+    pickle.dump(messages, f)
+
+print(f"Se prepararon {len(messages)} mensajes.")
