@@ -1,0 +1,21 @@
+# Entorno virtual
+venv/
+
+# Archivos temporales y de caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configuración de VS Code
+.vscode/
+
+# Archivos de Excel u otros datos sensibles
+*.xlsx
+*.xls
+
+# Archivos de logs (si los usás)
+*.log
+
+# Configuración de entorno (si usás variables de entorno)
+.env
