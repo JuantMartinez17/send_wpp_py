@@ -1,0 +1,5 @@
+Date: 7/4/2025
+Time: 22:8
+Phone Number: +5491133292257
+Message: Probando script con libreria pywhatkit
+--------------------
