@@ -4,17 +4,16 @@ import pickle
 def run():
     file = pandas.read_excel("CEOM - Automatización de Mensajes por WhatsApp.xlsx", sheet_name="DATOS DE ENVÍO", skiprows=2)
     data = file.values
-    file.columns = ["telefono", "fecha", "hora", "direccion", "motivo", "instrucciones"]
 
     messages = []
 
     for i in range(len(data)):
         row = data[i]
         phone = row[0]
-        if pandas.isna(row["phone"]):
+        if pandas.isna(phone):
             continue
-        date = pandas.to_datetime(row[1]).strftime('%d/%m/Y')
-        time = pandas.to_datetime(row[2]).strftime('%H:%M')
+        date = pandas.to_datetime(row[1]).strftime("%d/%m/%Y")
+        time = row[2].strftime('%H:%M')
         address = row[3]
         appointment = row[4]
         instruction = row[5]
