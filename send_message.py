@@ -13,14 +13,12 @@ for i, (num, msg) in enumerate(messages):
     print(f"[{i+1}/{len(messages)}] Enviando mensaje a {num} a las {hour}:{minute:02d}...")
 
     try:
-        pywhatkit.sendwhatmsg(
+        pywhatkit.sendwhatmsg_instantly(
             phone_no=num,
             message=msg,
-            time_hour=hour,
-            time_min=minute,
-            wait_time=20,
-            tab_close=True
+            wait_time=5,
+            tab_close=True,
+            close_time=3
         )
-        time.sleep(5)
     except Exception as e:
         print(f"Error al enviar el mensaje a {num}: {e}")
