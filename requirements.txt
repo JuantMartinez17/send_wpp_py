@@ -1,3 +1,4 @@
 openpyxl==3.1.5
 pandas==2.2.3
 pywhatkit==5.4
+selenium==4.31.0
