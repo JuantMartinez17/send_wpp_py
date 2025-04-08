@@ -21,6 +21,6 @@ for i, (num, msg) in enumerate(messages):
             wait_time=20,
             tab_close=True
         )
-        time.sleep(15)
+        time.sleep(5)
     except Exception as e:
         print(f"Error al enviar el mensaje a {num}: {e}")
