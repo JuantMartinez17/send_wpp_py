@@ -3,27 +3,33 @@ import pickle
 
 def run():
     file = pandas.read_excel("CEOM - Automatización de Mensajes por WhatsApp.xlsx", sheet_name="DATOS DE ENVÍO", skiprows=2)
-
+    data = file.values
     file.columns = ["telefono", "fecha", "hora", "direccion", "motivo", "instrucciones"]
 
     messages = []
 
-    for i, row in file.iterrows():
-        if pandas.isna(row["telefono"]):
+    for i in range(len(data)):
+        row = data[i]
+        phone = row[0]
+        if pandas.isna(row["phone"]):
             continue
-        numero = f"+549{int(row['telefono'])}"
-        fecha = pandas.to_datetime(row["fecha"]).strftime('%d/%m/%Y')
-        hora = row["hora"].strftime('%H:%M')
-        mensaje = f"""Hola! Este es un recordatorio para tu turno médico:
-        📅 *Fecha:* {fecha}
-        🕒 *Hora:* {hora}
-        📍 *Dirección:* {row['direccion']}
-        📝 *Motivo:* {row['motivo']}
-        📌 *Instrucciones:* {row['instrucciones']}
+        date = pandas.to_datetime(row[1]).strftime('%d/%m/Y')
+        time = pandas.to_datetime(row[2]).strftime('%H:%M')
+        address = row[3]
+        appointment = row[4]
+        instruction = row[5]
+        phone = f"+549{int(phone)}"
+        message = f"""Hola! Este es un recordatorio para tu turno médico:
+        📅 *Fecha:* {date}
+        🕒 *Hora:* {time}
+        📍 *Dirección:* {address}
+        📝 *Motivo:* {appointment}
+        📌 *Instrucciones:* {instruction}
 
         Por favor, confirmá tu asistencia. ¡Gracias!
         """
-        messages.append((numero, mensaje))
+
+        messages.append((phone, message))
 
     with open("messages.pkl", "wb") as f:
         pickle.dump(messages, f)
